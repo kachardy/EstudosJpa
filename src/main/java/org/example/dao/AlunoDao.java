@@ -37,6 +37,16 @@ public class AlunoDao {
         }
     }
 
+    public void atualizarAluno (Aluno aluno) {
+        try {
+            em.getTransaction().begin();
+            em.merge(aluno);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        }
+    }
+
     public Aluno buscarPorId (Long id) {
         return em.find(Aluno.class, id);
     }
