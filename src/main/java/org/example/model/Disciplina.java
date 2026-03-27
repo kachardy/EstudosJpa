@@ -2,6 +2,7 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class Disciplina {
     private int cargaHoraria;
 
     @ManyToMany(mappedBy = "disciplinas")
-    private List<Aluno> alunos;
+    private List<Aluno> alunos = new ArrayList<>();;
 
     public Long getId() {
         return id;

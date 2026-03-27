@@ -7,7 +7,10 @@
     <persistence-unit name="jpa-app-pu">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>org.example.model.Usuario</class>
+        <class>org.example.model.Aluno</class>
+        <class>org.example.model.Curso</class>
+        <class>org.example.model.Disciplina</class>
+        <class>org.example.model.Endereco</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>

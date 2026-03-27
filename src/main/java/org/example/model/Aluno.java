@@ -2,6 +2,7 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,7 +31,7 @@ public class Aluno {
             joinColumns = @JoinColumn(name = "aluno_id"), // FK para Aluno
             inverseJoinColumns = @JoinColumn(name = "disciplina_id") // FK para Disciplina
     )
-    private List<Disciplina> disciplinas;
+    private List<Disciplina> disciplinas = new ArrayList<>();;
 
     public Long getId() {
         return id;
