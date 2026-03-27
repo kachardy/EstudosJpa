@@ -27,7 +27,7 @@ public class AlunoDao {
         try {
             em.getTransaction().begin();
             // Primeiro buscamos o objeto para o EM gerenciar ele
-            Aluno aluno = em.find(Aluno.class, id);
+            Aluno aluno = buscarPorId(id);
             if (aluno != null) {
                 em.remove(aluno);
             }
