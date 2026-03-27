@@ -1,35 +1,35 @@
 package org.example.dao;
 
 import jakarta.persistence.EntityManager;
-import org.example.model.Aluno;
+import org.example.model.Endereco;
 
 import java.util.List;
 
-public class AlunoDao {
+public class EnderecoDao {
 
     private EntityManager em;
 
-    public AlunoDao (EntityManager em){
+    public EnderecoDao (EntityManager em){
         this.em = em;
     }
 
-    public void adicionarAluno (Aluno aluno) {
+    public void adicionarEndereco (Endereco endereco) {
         try {
             em.getTransaction().begin(); // Começa a transação
-            em.persist(aluno); // Dá o INSERT no banco
+            em.persist(endereco); // Dá o INSERT no banco
             em.getTransaction().commit(); // Confirma a transação
         } catch (Exception e) {
             em.getTransaction().rollback(); // Se der errado volta atrás
         }
     }
 
-    public void removerAlunoPorId(Long id) {
+    public void removerEnderecoPorId(Long id) {
         try {
             em.getTransaction().begin();
             // Primeiro buscamos o objeto para o EM gerenciar ele
-            Aluno aluno = em.find(Aluno.class, id);
-            if (aluno != null) {
-                em.remove(aluno);
+            Endereco endereco = em.find(Endereco.class, id);
+            if (endereco != null) {
+                em.remove(endereco);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -37,11 +37,11 @@ public class AlunoDao {
         }
     }
 
-    public Aluno buscarPorId (Long id) {
-        return em.find(Aluno.class, id);
+    public Endereco buscarPorId (Long id) {
+        return em.find(Endereco.class, id);
     }
 
-    public List<Aluno> listarTodos () {
-        return em.createQuery("SELECT a FROM Aluno a", Aluno.class).getResultList(); // Pega a lista do resultado da consulta
+    public List<Endereco> listarTodos () {
+        return em.createQuery("SELECT e FROM Endereco e", Endereco.class).getResultList(); // Pega a lista do resultado da consulta
     }
 }

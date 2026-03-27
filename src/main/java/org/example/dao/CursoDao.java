@@ -1,35 +1,35 @@
 package org.example.dao;
 
 import jakarta.persistence.EntityManager;
-import org.example.model.Aluno;
+import org.example.model.Curso;
 
 import java.util.List;
 
-public class AlunoDao {
+public class CursoDao {
 
     private EntityManager em;
 
-    public AlunoDao (EntityManager em){
+    public CursoDao (EntityManager em){
         this.em = em;
     }
 
-    public void adicionarAluno (Aluno aluno) {
+    public void adicionarCurso (Curso curso) {
         try {
             em.getTransaction().begin(); // Começa a transação
-            em.persist(aluno); // Dá o INSERT no banco
+            em.persist(curso); // Dá o INSERT no banco
             em.getTransaction().commit(); // Confirma a transação
         } catch (Exception e) {
             em.getTransaction().rollback(); // Se der errado volta atrás
         }
     }
 
-    public void removerAlunoPorId(Long id) {
+    public void removerCursoPorId(Long id) {
         try {
             em.getTransaction().begin();
             // Primeiro buscamos o objeto para o EM gerenciar ele
-            Aluno aluno = em.find(Aluno.class, id);
-            if (aluno != null) {
-                em.remove(aluno);
+            Curso curso = em.find(Curso.class, id);
+            if (curso != null) {
+                em.remove(curso);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -37,11 +37,11 @@ public class AlunoDao {
         }
     }
 
-    public Aluno buscarPorId (Long id) {
-        return em.find(Aluno.class, id);
+    public Curso buscarPorId (Long id) {
+        return em.find(Curso.class, id);
     }
 
-    public List<Aluno> listarTodos () {
-        return em.createQuery("SELECT a FROM Aluno a", Aluno.class).getResultList(); // Pega a lista do resultado da consulta
+    public List<Curso> listarTodos () {
+        return em.createQuery("SELECT c FROM Curso c", Curso.class).getResultList(); // Pega a lista do resultado da consulta
     }
 }
