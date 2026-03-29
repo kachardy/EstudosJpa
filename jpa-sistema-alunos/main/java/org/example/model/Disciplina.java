@@ -51,4 +51,9 @@ public class Disciplina {
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
     }
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
 }

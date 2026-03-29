@@ -80,4 +80,16 @@ public class Aluno {
     public void setDisciplinas(List<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
     }
+
+    @Override
+    public String toString() {
+        return  "----------------" + "\n" +
+                "Aluno" + "\n" +
+                "id = " + id + "\n" +
+                "nome = " + nome + "\n" +
+                "cpf = " + cpf + "\n" +
+                "endereco =" + endereco + "\n" +
+                "curso =" + curso + "\n" +
+                "disciplinas =" + disciplinas;
+    }
 }
