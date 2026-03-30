@@ -43,6 +43,7 @@ public class Programa {
                 8 - Exibir todos os alunos
                 9 - Exibir todos os cursos
                 10 - Exibir todas as disciplinas
+                11 - Listar alunos por disciplinas
                 0 - Sair
                 --------------------------""");
 
@@ -141,15 +142,10 @@ public class Programa {
                     System.out.println("Cidade: ");
                     String cidade = sc.nextLine();
 
-                    Endereco endereco = new Endereco();
-
                     aluno.getEndereco().setRua(rua);
                     aluno.getEndereco().setCidade(cidade);
                     aluno.setNome(nome);
                     aluno.setCpf(cpf);
-                    aluno.setEndereco(endereco);
-
-                    enderecoDao.adicionarEndereco(endereco);
                     alunoDao.atualizarAluno(aluno);
                 }
                 case "7" -> {
@@ -170,6 +166,19 @@ public class Programa {
                 }
                 case "10" -> {
                     System.out.println(disciplinaDao.listarTodas());
+                }
+                case "11" -> {
+                    System.out.println("Digite o id da disciplina que deseja ver os alunos: ");
+                    Disciplina disciplina = disciplinaDao.buscarPorId(Long.parseLong(sc.nextLine()));
+
+                    if (disciplina == null) {
+                        System.out.println("Essa disciplina não existe!");
+                        break;
+                    }
+                    System.out.println(alunoDao.buscarAlunoPorDisciplina(disciplina.getId()));
+                }
+                case "0" -> {
+                    System.out.println("Saindo do sistema...");
                 }
                 default -> {
                     System.out.println("Digite uma opção válida!!");
